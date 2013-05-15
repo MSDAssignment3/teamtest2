@@ -24,6 +24,7 @@ import java.nio.ShortBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
@@ -33,6 +34,8 @@ import android.util.Log;
 public class MyGLRenderer implements GLSurfaceView.Renderer {
 
 	private LessonTwoRenderer cubeRenderer = new LessonTwoRenderer();
+	private Context appContext = null;
+	private LessonFourRenderer texRenderer;
 	
     private static final String TAG = "MyGLRenderer";
 //    static float triangleCoords[] = { // in counterclockwise order:
@@ -89,6 +92,11 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
     // Declare as volatile because we are updating it from another thread
     public volatile float mAngle;
+    
+    public MyGLRenderer(Context context) {
+    	this.appContext = context;
+    	texRenderer = new LessonFourRenderer(context);
+    }
 
     @Override
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
@@ -106,7 +114,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         		vertexStride, vertexCount, color4);
         mSquare   = new Square();
         
-        cubeRenderer.onSurfaceCreated(unused, config);
+//        cubeRenderer.onSurfaceCreated(unused, config);
+        texRenderer.onSurfaceCreated(unused, config);
     }
 
     @Override
@@ -183,8 +192,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         mTriangle3.draw(mMVPMatrix);
         mTriangle2.draw(mMVPMatrix);
         
-        cubeRenderer.onDrawFrame(unused);
-        
+//        cubeRenderer.onDrawFrame(unused);
+        texRenderer.onDrawFrame(unused);
     }
 
     @Override
@@ -206,7 +215,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 //        GLES20.glBlendFunc(GLES20.GL_ONE, GLES20.GL_ONE);
 //        GLES20.glBlendFunc(GLES20.GL_DST_ALPHA, GLES20.GL_ZERO);
         
-        cubeRenderer.onSurfaceChanged(unused, width, height);
+//        cubeRenderer.onSurfaceChanged(unused, width, height);
+        texRenderer.onSurfaceChanged(unused, width, height);
     }
 
     public static int loadShader(int type, String shaderCode){
