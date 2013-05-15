@@ -124,7 +124,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 //        Matrix.multiplyMM(mMVPMatrix, 0, mProjMatrix, 0, mVMatrix, 0);
 
         // Create a rotation for the square
-        long time = SystemClock.uptimeMillis() % 5000L;
+//        long time = SystemClock.uptimeMillis() % 5000L;
+        long time = SystemClock.elapsedRealtime() % 5000L;
         float angle = (360f / 5000f) * ((int) time);
 //        Matrix.setRotateM(mRotationMatrix, 0, angle, 0, 1, 0);
         Matrix.setIdentityM(mRotationMatrix, 0);
