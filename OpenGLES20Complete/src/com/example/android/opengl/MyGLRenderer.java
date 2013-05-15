@@ -35,6 +35,16 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 	private LessonTwoRenderer cubeRenderer = new LessonTwoRenderer();
 	
     private static final String TAG = "MyGLRenderer";
+//    static float triangleCoords[] = { // in counterclockwise order:
+//        0.0f,  0.622008459f, 0.0f,   // top
+//       -0.5f, -0.311004243f, 0.0f,   // bottom left
+//        0.5f, -0.311004243f, 0.0f    // bottom right
+//    };
+//    static float triangleCoords2[] = { // in counterclockwise order:
+//        0.0f,  0.622008459f, 0.0f,   // top
+//        0.5f, -0.311004243f, 0.0f,    // bottom right
+//       -0.5f, -0.311004243f, 0.0f   // bottom left
+//    };
     static float c1 = (float) (1 / Math.sqrt(3) / 2);
     static float c2 = (float) (Math.sqrt(3) / 2);
     static float z = (float) Math.sqrt(2 / 3.0);
