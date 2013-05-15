@@ -144,7 +144,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         mSquare.draw(mMVPMatrix);
 
         // Re-calculate the projection and view transformation
-        float radius = 1;
+        float radius = 1.2f;
         double radAngle = Math.toRadians(angle * 2);
         Matrix.setIdentityM(mRotationMatrix, 0);
         Matrix.rotateM(mRotationMatrix, 0, 30, 1, 0, 0);
